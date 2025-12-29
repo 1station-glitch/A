@@ -1,1 +1,31 @@
-a
+name: بوت عناوين المستلمين
+
+on:
+  workflow_dispatch:  # تشغيل يدوي
+  schedule:
+    - cron: '*/15 * * * *'  # تشغيل كل 30 دقيقة
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install firebase-admin requests playwright
+          playwright install chromium
+
+      - name: Run bot
+        run: python main.py
+        env:
+          FIREBASE_JSON: ${{ secrets.FIREBASE_JSON }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
