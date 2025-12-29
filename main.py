@@ -196,7 +196,7 @@ def process_shipments():
 
                 page.wait_for_timeout(1000) # استراحة
 
-                notify(f"🐢 <b>عنوان استلام جديد</b>\n👤 {receiver_name}\n📍 {city}\n🚨 اسم المستلم {store_name}\n📱 الرقم: {receiver_phone}\n📍 المدينة - المنطقة: {city} - {region}\n🏘️ الحي - الشارع: {district_street}")
+                notify(f"🐢 <b>عنوان استلام جديد</b>\n🚨 اسم المتجر {store_name}\n👤 {receiver_name}\n📍 {city}\n📱 الرقم: {receiver_phone}\n📍 المدينة - المنطقة: {city} - {region}\n🏘️ الحي - الشارع: {district_street}")
                 # 7️⃣ الحفظ
                 SAVE_BTN = "#add_customer_form_btn"
                 print("   💾 جاري الحفظ...")
